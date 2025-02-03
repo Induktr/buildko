@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const menuItems = ["Home", "Services", "Projects", "About", "Blog", "FAQ", "Contact"];
+  const menuItems = ["Home", "Projects", "About", "Blog", "FAQ"];
 
   return (
     <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
@@ -20,7 +20,7 @@ const Navbar = () => {
             {menuItems.map((item) => (
               <Link
                 key={item}
-                to={`/${item.toLowerCase()}`}
+                to={item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 {item}
@@ -47,7 +47,7 @@ const Navbar = () => {
             {menuItems.map((item) => (
               <Link
                 key={item}
-                to={`/${item.toLowerCase()}`}
+                to={item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`}
                 className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
                 onClick={() => setIsOpen(false)}
               >
