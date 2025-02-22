@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f3f4f6;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-accent: #d97706;
+  --color-accent-hover: #b45309;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+[data-theme='dark'] {
+  --color-bg-primary: #111827;
+  --color-bg-secondary: #1f2937;
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-accent: #fbbf24;
+  --color-accent-hover: #f59e0b;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-text-primary transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent hover:bg-accent-hover text-white dark:text-gray-900 px-6 py-3 rounded-md font-medium transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-accent text-accent dark:border-amber-400 dark:text-amber-400 
+    px-6 py-3 rounded-md font-medium hover:bg-accent dark:hover:bg-amber-400 hover:text-white 
+    dark:hover:text-gray-900 transition-colors;
+  }
+}
+
+/* Additional dark mode classes */
+.dark .text-text-primary {
+  color: var(--color-text-primary);
+}
+
+.dark .text-text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.dark .bg-bg-primary {
+  background-color: var(--color-bg-primary);
+}
+
+.dark .bg-bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+/* Ensure smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
