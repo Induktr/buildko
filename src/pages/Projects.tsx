@@ -134,7 +134,7 @@ export default function Projects() {
 
         <BrickContainer>
           <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+            {isInView && filteredProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>

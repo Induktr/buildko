@@ -21,17 +21,15 @@ function App() {
         <Header />
         <main className="flex-grow pt-16">
           <AnimatePresence mode="wait">
-            <PageTransition>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/projects/:id" element={<ProjectDetail />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:id" element={<BlogPost />} />
-                <Route path="/faq" element={<FAQ />} />
-              </Routes>
-            </PageTransition>
+            <Routes>
+              <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+              <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
+              <Route path="/projects/:id" element={<PageTransition><ProjectDetail /></PageTransition>} />
+              <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+              <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+              <Route path="/blog/:id" element={<PageTransition><BlogPost /></PageTransition>} />
+              <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+            </Routes>
           </AnimatePresence>
         </main>
         <Footer />
