@@ -75,41 +75,6 @@ BuildKo is a modern construction company website designed to showcase project po
 - Performance monitoring & content updates
 - SEO & marketing automation
 
-## Installation
-### Prerequisites
-- **Node.js** v18+
-- **Yarn** or **npm**
-- **Docker** (for containerization)
-
-### Setup
-```bash
-# Clone the repository
-git clone https://github.com/your-org/buildko.git
-cd buildko
-
-# Install dependencies
-yarn install  # or npm install
-
-# Start the development server
-yarn dev  # or npm run dev
-```
-
-### Deployment
-- **Vercel Deployment:**
-```bash
-vercel --prod
-```
-- **Netlify Deployment:**
-```bash
-netlify deploy --prod
-```
-
-## Contributing
-1. Fork the repository
-2. Create a new branch (`feature/your-feature`)
-3. Commit changes and push
-4. Create a pull request
-
 ## License
 This project is licensed under the MIT License.
 
