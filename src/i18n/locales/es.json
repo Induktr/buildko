@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "about": "Nosotros",
+    "blog": "Blog",
+    "faq": "Preguntas",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Construyendo el Mundo del Mañana Hoy",
+    "subtitle": "Servicios de construcción expertos con un compromiso con la calidad, la seguridad y la innovación.",
+    "cta": {
+      "projects": "Nuestros Proyectos",
+      "contact": "Contáctenos"
+    }
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Soluciones integrales de construcción adaptadas a sus necesidades"
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Boletín",
+      "description": "Suscríbase a nuestro boletín para actualizaciones y noticias.",
+      "placeholder": "Ingrese su correo",
+      "button": "Suscribirse",
+      "success": "¡Suscripción exitosa!"
+    },
+    "rights": "Todos los derechos reservados."
+  }
+}

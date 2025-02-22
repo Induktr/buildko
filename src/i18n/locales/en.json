@@ -1,0 +1,140 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Building Tomorrow's World Today",
+    "subtitle": "Expert construction services with a commitment to quality, safety, and innovation.",
+    "cta": {
+      "projects": "Our Projects",
+      "contact": "Contact Us"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive construction solutions tailored to your needs",
+    "residential": {
+      "title": "Residential Construction",
+      "description": "Custom homes and residential developments built to the highest standards."
+    },
+    "commercial": {
+      "title": "Commercial Buildings",
+      "description": "Modern office spaces and retail locations designed for success."
+    },
+    "industrial": {
+      "title": "Industrial Facilities",
+      "description": "State-of-the-art manufacturing and warehouse facilities."
+    },
+    "renovation": {
+      "title": "Renovations",
+      "description": "Expert renovations and upgrades for existing structures."
+    }
+  },
+  "about": {
+    "title": "Our Story",
+    "subtitle": "Building excellence since 1985",
+    "story": "BuildCo was founded in 1985 by John Anderson with a vision to transform the construction industry through innovation and quality. What started as a small residential construction company has grown into one of the region's most trusted construction firms.",
+    "milestones": "Key Milestones",
+    "team": {
+      "title": "Our Leadership Team",
+      "subtitle": "Meet the experts leading our company",
+      "roles": {
+        "ceo": "Founder & CEO",
+        "coo": "Chief Operations Officer",
+        "cto": "Chief Technology Officer"
+      }
+    }
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Explore our portfolio of successful construction projects",
+    "details": {
+      "title": "Project Details",
+      "completionDate": "Completion Date",
+      "location": "Location",
+      "value": "Project Value",
+      "features": "Key Features",
+      "client": "Client"
+    },
+    "categories": {
+      "all": "All",
+      "commercial": "Commercial",
+      "residential": "Residential",
+      "industrial": "Industrial",
+      "renovation": "Renovation"
+    }
+  },
+  "blog": {
+    "title": "Our Blog",
+    "subtitle": "Latest news and insights from the construction industry",
+    "readMore": "Read More",
+    "posted": "Posted on",
+    "author": "By",
+    "backToBlog": "Back to Blog",
+    "categories": {
+      "all": "All Categories",
+      "sustainability": "Sustainability",
+      "technology": "Technology",
+      "design": "Design",
+      "construction": "Construction"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about our services",
+    "categories": {
+      "general": "General Questions",
+      "quality": "Quality",
+      "sustainability": "Sustainability",
+      "projectManagement": "Project Management",
+      "safety": "Safety"
+    },
+    "search": "Search questions...",
+    "noResults": "No questions found",
+    "showMore": "Show More"
+  },
+  "footer": {
+    "companyInfo": {
+      "title": "BuildCo",
+      "description": "Building excellence since 1985. Quality construction services for residential, commercial, and industrial projects."
+    },
+    "quickLinks": "Quick Links",
+    "contact": {
+      "title": "Contact Us",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "hours": "Hours"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to our newsletter for updates and insights.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe",
+      "success": "Successfully subscribed!",
+      "error": {
+        "required": "Email is required",
+        "invalid": "Invalid email address"
+      }
+    },
+    "rights": "© 2024 BuildCo. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "sitemap": "Sitemap"
+    }
+  },
+  "gallery": {
+    "prev": "Previous",
+    "next": "Next",
+    "fullscreen": "Toggle fullscreen"
+  }
+}
