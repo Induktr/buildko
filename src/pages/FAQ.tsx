@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { faqs } from '../data/content'
+import { faqsTranslations } from '../data/content.i18n'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
 export default function FAQ() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const categories = Array.from(new Set(faqs.map(faq => faq.category)))
+  type FaqCategory = keyof (typeof faqsTranslations)['en'];
+  const categories = Object.keys(faqsTranslations[i18n.language as keyof typeof faqsTranslations]) as FaqCategory[];
 
   return (
     <div className="py-12">
@@ -28,9 +29,7 @@ export default function FAQ() {
                 {t(`faq.categories.${category.toLowerCase()}`)}
               </h2>
               <div className="space-y-4">
-                {faqs
-                  .filter(faq => faq.category === category)
-                  .map((faq, index) => {
+                {faqsTranslations[i18n.language as keyof typeof faqsTranslations][category].map((faq, index) => {
                     const isOpen = openIndex === index
                     return (
                       <div

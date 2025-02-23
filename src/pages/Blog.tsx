@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { blogPosts } from '../data/content'
+import { blogPostsTranslations } from '../data/content.i18n'
 
 export default function Blog() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <div className="py-12">
@@ -16,38 +16,22 @@ export default function Blog() {
         </div>
 
         <div className="grid gap-12">
-          {blogPosts.map((post) => (
-            <article key={post.id} className="flex flex-col lg:flex-row gap-8">
-              <div className="lg:w-1/3">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-64 object-cover rounded-lg"
-                />
-              </div>
+          {Object.entries(blogPostsTranslations[i18n.language as keyof typeof blogPostsTranslations]).map(([id, post]) => (
+            <article key={id} className="flex flex-col lg:flex-row gap-8">
               <div className="lg:w-2/3">
                 <div className="mb-2">
-                  <span className="text-sm font-medium text-amber-600">
-                    {post.category}
-                  </span>
-                  <span className="mx-2 text-gray-300">•</span>
                   <span className="text-sm text-gray-500">
-                    {t('blog.posted')} {new Date(post.date).toLocaleDateString()}
+                    {t('blog.posted')}
                   </span>
                 </div>
-                <Link to={`/blog/${post.id}`}>
+                <Link to={`/blog/${id}`}>
                   <h2 className="text-2xl font-bold text-gray-900 mb-3 hover:text-amber-600">
                     {post.title}
                   </h2>
                 </Link>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <div className="flex items-center">
-                  <span className="text-sm font-medium text-gray-900">
-                    {t('blog.author')} {post.author}
-                  </span>
-                </div>
                 <Link
-                  to={`/blog/${post.id}`}
+                  to={`/blog/${id}`}
                   className="inline-block mt-4 text-amber-600 hover:text-amber-700 font-medium"
                 >
                   {t('blog.readMore')} →

@@ -10,7 +10,8 @@ export default function LanguageSwitcher() {
 
   const languages = [
     { code: 'en', name: 'English' },
-    { code: 'uk', name: 'Українська' }
+    { code: 'uk', name: 'Українська' },
+    { code: 'es', name: 'Español' }
   ]
 
   useEffect(() => {
@@ -57,11 +58,7 @@ export default function LanguageSwitcher() {
               <button
                 key={language.code}
                 onClick={() => changeLanguage(language.code)}
-                className={`w-full text-left px-4 py-2 text-sm ${
-                  i18n.language === language.code
-                    ? 'bg-amber-100 dark:bg-amber-900 text-amber-900 dark:text-amber-100'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
+                className={`w-full text-left px-4 py-2 text-sm ${i18n.language === language.code ? 'bg-amber-100 dark:bg-amber-900 text-amber-900 dark:text-amber-100' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
               >
                 {language.name}
               </button>

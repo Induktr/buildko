@@ -18,16 +18,133 @@
   },
   "services": {
     "title": "Nuestros Servicios",
-    "subtitle": "Soluciones integrales de construcción adaptadas a sus necesidades"
+    "subtitle": "Soluciones integrales de construcción adaptadas a sus necesidades",
+    "residential": {
+      "title": "Construcción Residencial",
+      "description": "Casas personalizadas y desarrollos residenciales construidos con los más altos estándares."
+    },
+    "commercial": {
+      "title": "Edificios Comerciales",
+      "description": "Espacios de oficinas modernos y locales comerciales diseñados para el éxito."
+    },
+    "industrial": {
+      "title": "Instalaciones Industriales",
+      "description": "Instalaciones de fabricación y almacenamiento de última generación."
+    },
+    "renovation": {
+      "title": "Renovaciones",
+      "description": "Renovaciones y mejoras expertas para estructuras existentes."
+    }
+  },
+  "about": {
+    "title": "Nuestra Historia",
+    "subtitle": "Construyendo excelencia desde 1985",
+    "story": "BuildCo fue fundada en 1985 por John Anderson con la visión de transformar la industria de la construcción a través de la innovación y la calidad. Lo que comenzó como una pequeña empresa de construcción residencial se ha convertido en una de las firmas constructoras más confiables de la región.",
+    "milestones": "Hitos Importantes",
+    "team": {
+      "title": "Nuestro Equipo Directivo",
+      "subtitle": "Conozca a los expertos que lideran nuestra empresa",
+      "names": {
+        "johnAnderson": "John Anderson",
+        "sarahWilliams": "Sarah Williams",
+        "michaelChen": "Michael Chen"
+      },
+      "roles": {
+        "founder_ceo": "Fundador y Director Ejecutivo",
+        "chief_operations_officer": "Director de Operaciones",
+        "chief_technology_officer": "Director de Tecnología"
+      },
+      "bios": {
+        "john_anderson": "John Anderson es el Fundador y Director Ejecutivo de BuildCo. Con décadas de experiencia en la industria de la construcción, ha liderado la compañía desde sus humildes comienzos hasta su posición actual como líder en el mercado.",
+        "sarah_williams": "Sarah Williams es la Directora de Operaciones de BuildCo. Ella es responsable de supervisar las operaciones diarias de la compañía y asegurar que todos los proyectos se completen a tiempo y dentro del presupuesto.",
+        "michael_chen": "Michael Chen es el Director de Tecnología de BuildCo. Él es responsable de liderar la estrategia tecnológica de la compañía y asegurar que BuildCo permanezca a la vanguardia de la innovación en la industria de la construcción."
+      }
+    }
+  },
+  "projects": {
+    "title": "Nuestros Proyectos",
+    "subtitle": "Explore nuestro portafolio de proyectos exitosos",
+    "details": {
+      "title": "Detalles del Proyecto",
+      "completionDate": "Fecha de Finalización",
+      "location": "Ubicación",
+      "value": "Valor del Proyecto",
+      "features": "Características Principales",
+      "client": "Cliente"
+    },
+    "categories": {
+      "all": "Todos",
+      "commercial": "Comercial",
+      "residential": "Residencial",
+      "industrial": "Industrial",
+      "renovation": "Renovación"
+    }
+  },
+  "blog": {
+    "title": "Nuestro Blog",
+    "subtitle": "Últimas noticias y perspectivas de la industria de la construcción",
+    "readMore": "Leer Más",
+    "posted": "Publicado el",
+    "author": "Por",
+    "backToBlog": "Volver al Blog",
+    "categories": {
+      "all": "Todas las Categorías",
+      "sustainability": "Sostenibilidad",
+      "technology": "Tecnología",
+      "design": "Diseño",
+      "construction": "Construcción"
+    }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Encuentre respuestas a preguntas comunes sobre nuestros servicios",
+    "categories": {
+      "general": "Preguntas Generales",
+      "quality": "Calidad",
+      "sustainability": "Sostenibilidad",
+      "projectManagement": "Gestión de Proyectos",
+      "safety": "Seguridad"
+    },
+    "search": "Buscar preguntas...",
+    "noResults": "No se encontraron preguntas",
+    "showMore": "Mostrar Más"
   },
   "footer": {
+    "companyInfo": {
+      "title": "BuildCo",
+      "description": "Construyendo excelencia desde 1985. Servicios de construcción de calidad para proyectos residenciales, comerciales e industriales."
+    },
+    "quickLinks": "Enlaces Rápidos",
+    "contact": {
+      "title": "Contáctenos",
+      "phone": "Teléfono",
+      "email": "Correo Electrónico",
+      "address": "Dirección",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "hours": "Horario"
+    },
     "newsletter": {
       "title": "Boletín",
       "description": "Suscríbase a nuestro boletín para actualizaciones y noticias.",
       "placeholder": "Ingrese su correo",
       "button": "Suscribirse",
-      "success": "¡Suscripción exitosa!"
+      "success": "¡Suscripción exitosa!",
+      "error": {
+        "required": "El correo es requerido",
+        "invalid": "Dirección de correo inválida"
+      }
     },
-    "rights": "Todos los derechos reservados."
+    "rights": "© 2024 BuildCo. Todos los derechos reservados.",
+    "links": {
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio",
+      "sitemap": "Mapa del Sitio"
+    }
+  },
+  "gallery": {
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "fullscreen": "Pantalla completa"
   }
 }

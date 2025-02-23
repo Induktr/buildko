@@ -1,46 +1,43 @@
 import { useParams, Navigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { blogPosts } from '../data/content'
+import { blogPostsTranslations } from '../data/content.i18n'
+
+// Define a type for the blog post IDs
+type BlogPostId = keyof typeof blogPostsTranslations.en;
 
 export default function BlogPost() {
-  const { t } = useTranslation()
-  const { id } = useParams()
-  const post = blogPosts.find(p => p.id === id)
-
-  if (!post) {
-    return <Navigate to="/blog" replace />
-  }
+  const { t, i18n } = useTranslation()
+  const { id } = useParams();
+    // Assert that id is a valid BlogPostId
+    const language = i18n.language as keyof typeof blogPostsTranslations;
+    const validIds = Object.keys(blogPostsTranslations[language] || {}) as BlogPostId[];
+  
+    if (!validIds.includes(id as BlogPostId)) {
+      return <Navigate to="/blog" replace />;
+    }
+  
+    const post = blogPostsTranslations[language]?.[id as BlogPostId];
+  
+    if (!post) {
+      return <Navigate to="/blog" replace />;
+    }
 
   return (
     <div className="py-12">
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <div className="mb-6">
-            <span className="text-sm font-medium text-amber-600">
-              {post.category}
-            </span>
-            <span className="mx-2 text-gray-300">•</span>
             <span className="text-sm text-gray-500">
-              {t('blog.posted')} {new Date(post.date).toLocaleDateString()}
+              {t('blog.posted')}
             </span>
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-6">
             {post.title}
           </h1>
-          <div className="flex items-center mb-8">
-            <span className="text-sm font-medium text-gray-900">
-              {t('blog.author')} {post.author}
-            </span>
-          </div>
+
         </div>
 
-        <div className="mb-12">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full h-96 object-cover rounded-lg"
-          />
-        </div>
+
 
         <div className="prose prose-lg mx-auto">
           {post.content.split('\n\n').map((paragraph, index) => (

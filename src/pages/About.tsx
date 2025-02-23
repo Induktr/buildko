@@ -51,9 +51,9 @@ export default function About() {
                     className="w-48 h-48 rounded-full mx-auto object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
-                <p className="text-amber-600 mb-4">{t(`about.team.roles.${member.role.toLowerCase().replace(/ & /g, '_').replace(/ /g, '_')}`)}</p>
-                <p className="text-gray-600">{member.bio}</p>
+                <h3 className="text-xl font-semibold text-gray-900">{t(`about.team.names.${member.name}`)}</h3>
+                <p className="text-amber-600 mb-4">{t(`about.team.roles.${member.role}`)}</p>
+                <p className="text-gray-600">{t(`about.team.bios.${member.bio}`)}</p>
               </div>
             ))}
           </div>

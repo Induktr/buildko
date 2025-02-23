@@ -44,10 +44,20 @@
     "team": {
       "title": "Our Leadership Team",
       "subtitle": "Meet the experts leading our company",
+      "names": {
+        "johnAnderson": "John Anderson",
+        "sarahWilliams": "Sarah Williams",
+        "michaelChen": "Michael Chen"
+      },
       "roles": {
-        "ceo": "Founder & CEO",
-        "coo": "Chief Operations Officer",
-        "cto": "Chief Technology Officer"
+        "founder_ceo": "Founder & CEO",
+        "chief_operations_officer": "Chief Operations Officer",
+        "chief_technology_officer": "Chief Technology Officer"
+      },
+      "bios": {
+        "johnAnderson": "John Anderson is the Founder and CEO of BuildCo. With decades of experience in the construction industry, he has led the company from its humble beginnings to its current position as a leader in the market.",
+        "sarahWilliams": "Sarah Williams is the Chief Operations Officer at BuildCo. She is responsible for overseeing the company's day-to-day operations and ensuring that all projects are completed on time and within budget.",
+        "michaelChen": "Michael Chen is the Chief Technology Officer at BuildCo. He is responsible for leading the company's technology strategy and ensuring that BuildCo remains at the forefront of innovation in the construction industry."
       }
     }
   },
