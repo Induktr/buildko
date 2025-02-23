@@ -63,11 +63,18 @@
 }
 
 /* Image Gallery Overrides */
-.image-gallery-left-nav,
+.image-gallery-left-nav {
+  padding: 20px 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px; /* Adjust as needed */
+}
+
 .image-gallery-right-nav {
   padding: 20px 10px;
   top: 50%;
   transform: translateY(-50%);
+  right: 20px; /* Adjust as needed */
 }
 
 .image-gallery-thumbnail.active,

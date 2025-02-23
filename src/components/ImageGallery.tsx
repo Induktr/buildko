@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState, MouseEventHandler } from 'react';
 import ReactImageGallery from 'react-image-gallery';
+import ReactZoomPanPinchComponent from 'react-zoom-pan-pinch';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -26,13 +27,6 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     setIsFullscreen(!!document.fullscreenElement);
   }, []);
 
-  useEffect(() => {
-    document.addEventListener('fullscreenchange', handleScreenChange);
-    return () => {
-      document.removeEventListener('fullscreenchange', handleScreenChange);
-    };
-  }, [handleScreenChange]);
-
   /**
    * Toggles fullscreen mode for the image gallery.
    */
@@ -54,6 +48,14 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     }
   }, [isFullscreen]);
 
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', handleScreenChange);
+    handleFullscreenClick(); // Explicitly call the function
+    return () => {
+      document.removeEventListener('fullscreenchange', handleScreenChange);
+    };
+  }, [handleScreenChange, handleFullscreenClick]);
+
   // Configuration for the image gallery
   const galleryItems = images.map(image => ({
     original: image,
@@ -66,18 +68,24 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
         transition={{ duration: 0.5 }}
         className="relative w-full h-full"
       >
-        <img
-          src={item.original}
-          alt={item.originalAlt || ''}
-          className="w-full h-full object-contain"
-          loading="lazy" // Add lazy loading for performance
-          onError={(e: any) => {
-            console.error("Image failed to load:", item.original);
-            e.target.onerror = null; // Prevent infinite loop
-            e.target.src = "https://via.placeholder.com/800x600?text=Image+Not+Available"; // Use placeholder image
-          }}
-          onLoad={() => setIsLoading(false)}
-        />
+        <ReactZoomPanPinchComponent
+          initialScale={1}
+          maxScale={3}
+          className="w-full h-full"
+        >
+          <img
+            src={item.original}
+            alt={item.originalAlt || ''}
+            className="w-full h-full object-contain"
+            loading="lazy" // Add lazy loading for performance
+            onError={(e: any) => {
+              console.error("Image failed to load:", item.original);
+              e.target.onerror = null; // Prevent infinite loop
+              e.target.src = "https://via.placeholder.com/800x600?text=Image+Not+Available"; // Use placeholder image
+            }}
+            onLoad={() => setIsLoading(false)}
+          />
+        </ReactZoomPanPinchComponent>
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
             <LoadingSpinner />
