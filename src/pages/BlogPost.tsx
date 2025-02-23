@@ -34,6 +34,7 @@ export default function BlogPost() {
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
             {post.title}
           </h1>
+          <img src="https://res.cloudinary.com/dsjalneil/image/upload/v1734994812/InduktrCompany_rmzwmb.jpg" alt="Blog Post" className="mb-8 rounded-lg" />
 
         </div>
 

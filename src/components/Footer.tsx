@@ -15,17 +15,31 @@ export default function Footer() {
   const contactRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleContactClick = () => {
-      if (contactRef.current) {
-        contactRef.current.scrollIntoView({ behavior: 'smooth' });
-        setIsContactHighlighted(true);
-        setTimeout(() => setIsContactHighlighted(false), 2000);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsContactHighlighted(true);
+          } else {
+            setIsContactHighlighted(false);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the section is visible
       }
+    );
+
+    if (contactRef.current) {
+      observer.observe(contactRef.current);
     }
 
-    window.addEventListener('contact-section-click', handleContactClick)
-    return () => window.removeEventListener('contact-section-click', handleContactClick)
-  }, [])
+    return () => {
+      if (contactRef.current) {
+        observer.unobserve(contactRef.current);
+      }
+    };
+  }, []);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<NewsletterForm>()
 
   const onSubmit = (data: NewsletterForm) => {
@@ -56,7 +70,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer id="footer" className="bg-gray-900 text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}

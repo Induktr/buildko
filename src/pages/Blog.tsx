@@ -18,6 +18,11 @@ export default function Blog() {
         <div className="grid gap-12">
           {Object.entries(blogPostsTranslations[i18n.language as keyof typeof blogPostsTranslations]).map(([id, post]) => (
             <article key={id} className="flex flex-col lg:flex-row gap-8">
+              <img
+                src="https://res.cloudinary.com/dsjalneil/image/upload/v1734994812/InduktrCompany_rmzwmb.jpg"
+                alt={post.title}
+                className="lg:w-1/3 rounded-lg"
+              />
               <div className="lg:w-2/3">
                 <div className="mb-2">
                   <span className="text-sm text-gray-500 dark:text-white">
