@@ -8,39 +8,42 @@ import { BrickAnimation, BrickContainer } from '../components/animations/BrickAn
 import { useGesture } from '@use-gesture/react'
 import { useSpring, animated } from '@react-spring/web'
 
+interface ProjectCardProps {
+  project: any;
+  index: number;
+}
 
-const ProjectCard = ({ project, index }: { project: any; index: number }) => {
-  const { t, i18n } = useTranslation()
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
+  const { t, i18n } = useTranslation();
   const [{ scale, rotateX, rotateY }, api] = useSpring(() => ({
     scale: 1,
     rotateX: 0,
     rotateY: 0,
     config: { mass: 1, tension: 170, friction: 26 }
-  }))
+  }));
 
-  useGesture(
-    {
-      onHover: ({ hovering }) =>
-        api({ scale: hovering ? 1.05 : 1 }),
-      onMove: ({ xy: [px, py], target }) => {
-        const bounds = (target as HTMLElement).getBoundingClientRect()
-        const x = (px - bounds.left) / bounds.width
-        const y = (py - bounds.top) / bounds.height
-        api({
-          rotateX: (0.5 - y) * 10,
-          rotateY: (x - 0.5) * 10,
-        })
-      },
-      onMouseLeave: () => {
-        api({ rotateX: 0, rotateY: 0 })
-      },
-    },
-    {
-      target: window,
-      eventOptions: { passive: false },
-    }
-  )
-
+useGesture(
+{
+  onHover: ({ hovering }) =>
+    api({ scale: hovering ? 1.05 : 1 }),
+  onMove: ({ xy: [px, py], target }) => {
+    const bounds = (target as HTMLElement).getBoundingClientRect()
+    const x = (px - bounds.left) / bounds.width
+    const y = (py - bounds.top) / bounds.height
+    api({
+      rotateX: (0.5 - y) * 10,
+      rotateY: (x - 0.5) * 10,
+    })
+  },
+  onMouseLeave: () => {
+    api({ rotateX: 0, rotateY: 0 })
+  }
+},
+{
+  target: window,
+  eventOptions: { passive: false }
+}
+);
   return (
     <BrickAnimation index={index} delay={0.2}>
       <Link to={`/projects/${project.id}`}>

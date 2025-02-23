@@ -1,6 +1,7 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { projects } from '../data/projects'
+import { projectsTranslations } from '../data/projects.i18n'
 import ImageGallery from '../components/ImageGallery'
 import { CalendarDays, CircleCheck, DollarSign, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -8,7 +9,7 @@ import { BrickAnimation } from '../components/animations/BrickAnimation'
 import PageTransition from '../components/animations/PageTransition'
 
 export default function ProjectDetail() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { id } = useParams()
   const project = projects.find(p => p.id === id)
 
@@ -27,10 +28,10 @@ export default function ProjectDetail() {
             className="max-w-3xl mx-auto text-center mb-12"
           >
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              {project.title}
+              {(projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations)['en']] as {title: string}).title}
             </h1>
             <p className="text-lg text-gray-600">
-              {project.description}
+              {(projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations)['en']] as {description: string}).description}
             </p>
           </motion.div>
 
@@ -85,16 +86,19 @@ export default function ProjectDetail() {
                   {t('projects.details.features')}
                 </h2>
                 <ul className="space-y-3">
-                  {project.features.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      whileHover={{ scale: 1.02, x: 10 }}
-                      className="flex items-center gap-3"
-                    >
-                      <CircleCheck className="w-5 h-5 text-amber-600" />
-                      <span>{feature}</span>
-                    </motion.li>
-                  ))}
+                  {project.features.map((feature, index) => {
+                    const translatedFeature = (projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations)['en']] as {features: {[key: string]: string}}).features[feature];
+                    return (
+                      <motion.li
+                        key={index}
+                        whileHover={{ scale: 1.02, x: 10 }}
+                        className="flex items-center gap-3"
+                      >
+                        <CircleCheck className="w-5 h-5 text-amber-600" />
+                        <span>{translatedFeature}</span>
+                      </motion.li>
+                    )
+                  })}
                 </ul>
               </div>
             </BrickAnimation>

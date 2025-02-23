@@ -61,3 +61,17 @@
 * {
   @apply transition-colors duration-200;
 }
+
+/* Image Gallery Overrides */
+.image-gallery-left-nav,
+.image-gallery-right-nav {
+  padding: 20px 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus,
+.image-gallery-thumbnail:hover {
+  border-color: #d97706; /* amber-600 */
+}

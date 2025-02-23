@@ -148,7 +148,6 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     onScreenChange: handleScreenChange,
     onErrorImageURL: "https://via.placeholder.com/800x600?text=Image+Not+Available",
     useBrowserFullscreen: false,
-    onClick: handleFullscreenClick,
     renderFullscreenButton: renderFullscreenButton,
     renderLeftNav: renderLeftNav,
     renderRightNav: renderRightNav,
