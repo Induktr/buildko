@@ -25,7 +25,7 @@ export const BrickAnimation = ({ index, children, delay = 0 }: BrickProps) => {
       animate={controls}
       variants={{
         hidden: {
-          opacity: 0,
+          opacity: 0.5,
           y: 50,
           rotate: Math.random() * 10 - 5,
           scale: 0.8
@@ -45,7 +45,7 @@ export const BrickAnimation = ({ index, children, delay = 0 }: BrickProps) => {
       }}
       whileHover={{
         scale: 1.02,
-        transition: { duration: 0.2 }
+        transition: { duration: 0.1 }
       }}
       whileTap={{ scale: 0.98 }}
       style={{ 

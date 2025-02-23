@@ -54,7 +54,7 @@ useGesture(
             rotateY,
             transformStyle: 'preserve-3d',
           }}
-          className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
         >
           <div className="relative h-64 overflow-hidden">
             <motion.img
@@ -75,10 +75,10 @@ useGesture(
             <span className="text-sm font-medium text-amber-600">
               {t(`projects.categories.${project.category.toLowerCase()}`)}
             </span>
-            <h3 className="text-xl font-semibold text-gray-900 mt-2">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-2">
               {projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations)[keyof typeof projectsTranslations]].title}
             </h3>
-            <p className="text-gray-600 mt-2 line-clamp-2">
+            <p className="text-gray-600 dark:text-white mt-2 line-clamp-2">
               {projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations[keyof typeof projectsTranslations])].description}
             </p>
           </div>
@@ -106,8 +106,8 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('projects.title')}</h1>
-          <p className="text-lg text-gray-600">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('projects.title')}</h1>
+          <p className="text-lg text-gray-600 dark:text-white">
             {t('projects.subtitle')}
           </p>
         </motion.div>
@@ -125,10 +125,10 @@ export default function Projects() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-2 rounded-full transition-colors ${
-                  selectedCategory === category
-                    ? 'bg-amber-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                                  selectedCategory === category
+                                    ? 'bg-amber-600 text-white'
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 hover:dark:bg-gray-600'
+                                }`}
               >
                 {t(`projects.categories.${category.toLowerCase()}`)}
               </motion.button>

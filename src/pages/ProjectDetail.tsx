@@ -22,15 +22,15 @@ export default function ProjectDetail() {
       <div className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.8, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.05 }}
             className="max-w-3xl mx-auto text-center mb-12"
           >
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {(projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations)['en']] as {title: string}).title}
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-white">
               {(projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations)['en']] as {description: string}).description}
             </p>
           </motion.div>
@@ -42,9 +42,9 @@ export default function ProjectDetail() {
           <div className="grid md:grid-cols-2 gap-12">
             <BrickAnimation index={0}>
               <div>
-                <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-                  {t('projects.details.title')}
-                </h2>
+                <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+                                  {t('projects.details.title')}
+                                </h2>
                 <div className="space-y-4">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
@@ -53,7 +53,7 @@ export default function ProjectDetail() {
                     <CalendarDays className="w-6 h-6 text-amber-600" />
                     <div>
                       <p className="font-medium">{t('projects.details.completionDate')}</p>
-                      <p className="text-gray-600">{project.completionDate}</p>
+                      <p className="text-gray-600 dark:text-white">{project.completionDate}</p>
                     </div>
                   </motion.div>
                   <motion.div
@@ -63,7 +63,7 @@ export default function ProjectDetail() {
                     <MapPin className="w-6 h-6 text-amber-600" />
                     <div>
                       <p className="font-medium">{t('projects.details.location')}</p>
-                      <p className="text-gray-600">{project.location}</p>
+                      <p className="text-gray-600 dark:text-white">{project.location}</p>
                     </div>
                   </motion.div>
                   <motion.div
@@ -73,7 +73,7 @@ export default function ProjectDetail() {
                     <DollarSign className="w-6 h-6 text-amber-600" />
                     <div>
                       <p className="font-medium">{t('projects.details.value')}</p>
-                      <p className="text-gray-600">{project.value}</p>
+                      <p className="text-gray-600 dark:text-white">{project.value}</p>
                     </div>
                   </motion.div>
                 </div>
@@ -82,9 +82,9 @@ export default function ProjectDetail() {
 
             <BrickAnimation index={1}>
               <div>
-                <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-                  {t('projects.details.features')}
-                </h2>
+                <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+                                   {t('projects.details.features')}
+                                 </h2>
                 <ul className="space-y-3">
                   {project.features.map((feature, index) => {
                     const translatedFeature = (projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations)['en']] as {features: {[key: string]: string}}).features[feature];

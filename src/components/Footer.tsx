@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -11,6 +11,21 @@ interface NewsletterForm {
 export default function Footer() {
   const { t } = useTranslation()
   const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [isContactHighlighted, setIsContactHighlighted] = useState(false)
+  const contactRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleContactClick = () => {
+      if (contactRef.current) {
+        contactRef.current.scrollIntoView({ behavior: 'smooth' });
+        setIsContactHighlighted(true);
+        setTimeout(() => setIsContactHighlighted(false), 2000);
+      }
+    }
+
+    window.addEventListener('contact-section-click', handleContactClick)
+    return () => window.removeEventListener('contact-section-click', handleContactClick)
+  }, [])
   const { register, handleSubmit, reset, formState: { errors } } = useForm<NewsletterForm>()
 
   const onSubmit = (data: NewsletterForm) => {
@@ -84,7 +99,10 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div
+            ref={contactRef}
+            className={`transition-all duration-700 ${isContactHighlighted ? 'transform scale-105 translate-y-[-10px] bg-gray-800 p-6 rounded-lg shadow-lg' : ''}`}
+          >
             <h3 className="text-xl font-bold mb-4">{t('footer.contact.title')}</h3>
             <ul className="space-y-3">
               <li>

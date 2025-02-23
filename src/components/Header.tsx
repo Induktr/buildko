@@ -54,22 +54,25 @@ export default function Header() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Link
-                  to={item.href}
-                  className={`px-3 py-2 text-sm font-medium transition-colors relative ${
-                    isActive(item.href)
-                      ? 'text-accent dark:text-amber-400'
-                      : 'text-text-secondary dark:text-gray-300 hover:text-accent dark:hover:text-amber-400'
-                  }`}
-                >
-                  {item.name}
-                  {isActive(item.href) && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent dark:bg-amber-400"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
+                                    to={item.href}
+                                    className={`px-3 py-2 text-sm font-medium transition-colors relative ${
+                                    isActive(item.href)
+                                        ? 'text-accent dark:text-amber-400'
+                                        : 'text-text-secondary dark:text-gray-300 hover:text-accent dark:hover:text-amber-400'
+                                    }`}
+                                   onClick={() => {
+                                     window.dispatchEvent(new Event('contact-section-click'));
+                                   }}
+                                  >
+                                    {item.name}
+                                    {isActive(item.href) && (
+                                    <motion.div
+                                        layoutId="activeIndicator"
+                                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent dark:bg-amber-400"
+                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                    />
+                                    )}
+                                  </Link>
               </motion.div>
             ))}
 

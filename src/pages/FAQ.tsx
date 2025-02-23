@@ -14,10 +14,10 @@ export default function FAQ() {
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {t('faq.title')}
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-white">
             {t('faq.subtitle')}
           </p>
         </div>
@@ -25,7 +25,7 @@ export default function FAQ() {
         <div className="max-w-3xl mx-auto">
           {categories.map((category) => (
             <div key={category} className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                 {t(`faq.categories.${category}`)}
               </h2>
               <div className="space-y-4">
@@ -40,7 +40,7 @@ export default function FAQ() {
                           className="w-full flex justify-between items-center p-4 text-left"
                           onClick={() => setOpenIndex(isOpen ? null : index)}
                         >
-                          <span className="font-medium text-gray-900">
+                          <span className="font-medium text-gray-900 dark:text-white">
                             {faq.question}
                           </span>
                           {isOpen ? (
@@ -51,7 +51,7 @@ export default function FAQ() {
                         </button>
                         {isOpen && (
                           <div className="px-4 pb-4">
-                            <p className="text-gray-600">{faq.answer}</p>
+                            <p className="text-gray-600 dark:text-white">{faq.answer}</p>
                           </div>
                         )}
                       </div>

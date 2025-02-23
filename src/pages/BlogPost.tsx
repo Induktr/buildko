@@ -27,11 +27,11 @@ export default function BlogPost() {
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <div className="mb-6">
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gray-500 dark:text-white">
               {t('blog.posted')}
             </span>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
             {post.title}
           </h1>
 
@@ -41,7 +41,7 @@ export default function BlogPost() {
 
         <div className="prose prose-lg mx-auto">
           {post.content.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="text-gray-600 mb-6">
+            <p key={index} className="text-gray-600 dark:text-white mb-6">
               {paragraph}
             </p>
           ))}
