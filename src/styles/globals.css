@@ -1,0 +1,53 @@
+.custom-image-gallery {
+  @apply bg-gray-900/5;
+}
+
+.custom-image-gallery .image-gallery-content {
+  @apply relative;
+}
+
+.custom-image-gallery .image-gallery-slide {
+  @apply bg-transparent;
+}
+
+.custom-image-gallery .image-gallery-thumbnails-container {
+  @apply cursor-pointer;
+}
+
+.custom-image-gallery .image-gallery-thumbnail {
+  @apply border-2 border-transparent transition-all duration-200;
+}
+
+.custom-image-gallery .image-gallery-thumbnail.active,
+.custom-image-gallery .image-gallery-thumbnail:hover {
+  @apply border-amber-500;
+}
+
+.custom-image-gallery .image-gallery-thumbnail-image {
+  @apply object-cover;
+}
+
+.custom-image-gallery .image-gallery-bullets {
+  @apply bottom-4;
+}
+
+.custom-image-gallery .image-gallery-bullet {
+  @apply bg-gray-300 border-2 border-gray-300 transition-all duration-200;
+}
+
+.custom-image-gallery .image-gallery-bullet.active {
+  @apply bg-amber-500 border-amber-500;
+}
+
+.custom-image-gallery .image-gallery-bullet:hover {
+  @apply bg-amber-400 border-amber-400;
+}
+
+/* Fullscreen mode adjustments */
+.fullscreen .custom-image-gallery {
+  @apply bg-gray-900;
+}
+
+.fullscreen .custom-image-gallery .image-gallery-slide {
+  @apply bg-transparent;
+}

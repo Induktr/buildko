@@ -150,8 +150,11 @@
     }
   },
   "gallery": {
-    "prev": "Previous",
-    "next": "Next",
-    "fullscreen": "Toggle fullscreen"
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "reset": "Reset zoom",
+    "fullscreen": "Toggle fullscreen",
+    "left": "Previous image",
+    "right": "Next image"
   }
 }
