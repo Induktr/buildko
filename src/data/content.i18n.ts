@@ -110,5 +110,37 @@ export const faqsTranslations = {
         answer: 'Безпека є нашим головним пріоритетом. Ми підтримуємо комплексні програми безпеки, регулярні навчальні сесії та суворе дотримання всіх норм OSHA.'
       }
     ]
+  },
+  es: {
+    general: [
+      {
+        question: '¿Qué tipos de proyectos suelen manejar?',
+        answer: 'Manejamos una amplia gama de proyectos de construcción, incluyendo desarrollos residenciales, comerciales e industriales. Nuestra experiencia abarca desde casas de lujo hasta complejos de oficinas e instalaciones de fabricación.'
+      }
+    ],
+    quality: [
+      {
+        question: '¿Cómo se asegura la calidad del proyecto?',
+        answer: 'Mantenemos estrictos procesos de control de calidad a lo largo de cada proyecto, incluyendo inspecciones regulares, el cumplimiento de las normas de la industria y la supervisión continua por parte de los jefes de proyecto experimentados.'
+      }
+    ],
+    sustainability: [
+      {
+        question: '¿Cuál es su enfoque de la construcción sostenible?',
+        answer: 'Priorizamos las prácticas de construcción sostenible mediante el uso de materiales ecológicos, la implementación de sistemas de eficiencia energética y el seguimiento de las directrices LEED cuando sea aplicable.'
+      }
+    ],
+    projectManagement: [
+      {
+        question: '¿Cómo se gestionan los plazos y fechas de entrega de los proyectos?',
+        answer: 'Creamos programas de proyectos detallados utilizando un software de planificación avanzado y mantenemos una comunicación regular con todos los interesados para garantizar que los proyectos se mantengan en el camino correcto.'
+      }
+    ],
+    safety: [
+      {
+        question: '¿Qué medidas de seguridad tienen implementadas?',
+        answer: 'La seguridad es nuestra máxima prioridad. Mantenemos programas de seguridad integrales, sesiones de capacitación regulares y un estricto cumplimiento de todas las normas de la OSHA.'
+      }
+    ]
   }
 };

@@ -33,23 +33,23 @@ Today, BuildCo continues to lead the industry in sustainable construction practi
   milestones: [
     {
       year: "1985",
-      event: "founded"
+      event: "about.milestones.founded"
     },
     {
       year: "1995",
-      event: "expanded"
+      event: "about.milestones.expanded"
     },
     {
       year: "2005",
-      event: "iso9001"
+      event: "about.milestones.iso9001"
     },
     {
       year: "2015",
-      event: "sustainable"
+      event: "about.milestones.sustainable"
     },
     {
       year: "2023",
-      event: "completed"
+      event: "about.milestones.completed"
     }
   ]
 };
@@ -60,20 +60,20 @@ export const teamMembers: TeamMember[] = [
     name: "johnAnderson",
     role: "founder_ceo",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
-    bio: "john_anderson"
+    bio: "johnAnderson"
   },
   {
     id: "sarah-williams",
     name: "sarahWilliams",
     role: "chief_operations_officer",
     image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
-    bio: "sarah_williams"
+    bio: "sarahWilliams"
   },
   {
     id: "michael-chen",
     name: "michaelChen",
     role: "chief_technology_officer",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-    bio: "michael_chen"
+    bio: "michaelChen"
   }
 ];

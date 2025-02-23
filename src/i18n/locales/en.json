@@ -40,7 +40,14 @@
     "title": "Our Story",
     "subtitle": "Building excellence since 1985",
     "story": "BuildCo was founded in 1985 by John Anderson with a vision to transform the construction industry through innovation and quality. What started as a small residential construction company has grown into one of the region's most trusted construction firms.",
-    "milestones": "Key Milestones",
+    "milestonesTitle": "Key Milestones",
+    "milestones": {
+      "founded": "founded",
+      "expanded": "expanded",
+      "iso9001": "ISO9001",
+      "sustainable": "sustainable",
+      "completed": "completed"
+    },
     "team": {
       "title": "Our Leadership Team",
       "subtitle": "Meet the experts leading our company",
@@ -98,16 +105,16 @@
   "faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "Find answers to common questions about our services",
+    "search": "Search questions...",
+    "noResults": "No questions found",
+    "showMore": "Show More",
     "categories": {
       "general": "General Questions",
       "quality": "Quality",
       "sustainability": "Sustainability",
       "projectManagement": "Project Management",
       "safety": "Safety"
-    },
-    "search": "Search questions...",
-    "noResults": "No questions found",
-    "showMore": "Show More"
+    }
   },
   "footer": {
     "companyInfo": {

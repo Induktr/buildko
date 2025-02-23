@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { projects, categories } from '../data/projects'
+import { projectsTranslations } from '../data/projects.i18n'
 import { BrickAnimation, BrickContainer } from '../components/animations/BrickAnimation'
 import { useGesture } from '@use-gesture/react'
 import { useSpring, animated } from '@react-spring/web'
 
+
 const ProjectCard = ({ project, index }: { project: any; index: number }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [{ scale, rotateX, rotateY }, api] = useSpring(() => ({
     scale: 1,
     rotateX: 0,
@@ -18,7 +20,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
 
   useGesture(
     {
-      onHover: ({ hovering }) => 
+      onHover: ({ hovering }) =>
         api({ scale: hovering ? 1.05 : 1 }),
       onMove: ({ xy: [px, py], target }) => {
         const bounds = (target as HTMLElement).getBoundingClientRect()
@@ -64,17 +66,17 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 0.2 }}
               className="absolute inset-0 bg-black transition-opacity"
-            />
+          />
           </div>
           <div className="p-6">
             <span className="text-sm font-medium text-amber-600">
               {t(`projects.categories.${project.category.toLowerCase()}`)}
             </span>
             <h3 className="text-xl font-semibold text-gray-900 mt-2">
-              {project.title}
+              {projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations)[keyof typeof projectsTranslations]].title}
             </h3>
             <p className="text-gray-600 mt-2 line-clamp-2">
-              {project.description}
+              {projectsTranslations[i18n.language as keyof typeof projectsTranslations][project.id as keyof (typeof projectsTranslations[keyof typeof projectsTranslations])].description}
             </p>
           </div>
         </animated.div>
@@ -82,7 +84,6 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
     </BrickAnimation>
   )
 }
-
 export default function Projects() {
   const { t } = useTranslation()
   const [selectedCategory, setSelectedCategory] = useState("All")

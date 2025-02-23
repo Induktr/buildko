@@ -26,11 +26,11 @@ export default function FAQ() {
           {categories.map((category) => (
             <div key={category} className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t(`faq.categories.${category.toLowerCase()}`)}
+                {t(`faq.categories.${category}`)}
               </h2>
               <div className="space-y-4">
                 {faqsTranslations[i18n.language as keyof typeof faqsTranslations][category].map((faq, index) => {
-                    const isOpen = openIndex === index
+                  const isOpen = openIndex === index
                     return (
                       <div
                         key={index}

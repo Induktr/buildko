@@ -22,7 +22,7 @@ export default function About() {
 
           {/* Milestones */}
           <div className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">{t('about.milestones')}</h2>
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">{t('about.milestonesTitle')}</h2>
             <div className="max-w-3xl mx-auto">
               {companyHistory.milestones.map((milestone, index) => (
                 <div key={index} className="flex items-center mb-8">
@@ -30,7 +30,7 @@ export default function About() {
                     {milestone.year}
                   </div>
                   <div className="flex-grow pl-8 border-l-2 border-amber-200">
-                    <p className="text-gray-700">{milestone.event}</p>
+                    <p className="text-gray-700">{t(milestone.event)}</p>
                   </div>
                 </div>
               ))}
