@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState, MouseEventHandler } from 'react';
 import ReactImageGallery from 'react-image-gallery';
-import ReactZoomPanPinchComponent from 'react-zoom-pan-pinch';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { TransformWrapper, TransformComponent } from '@pronestor/react-zoom-pan-pinch';
 import { BrickAnimation } from './animations/BrickAnimation';
 import LoadingSpinner from './animations/LoadingSpinner';
 import 'react-image-gallery/styles/css/image-gallery.css';
@@ -27,6 +27,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     setIsFullscreen(!!document.fullscreenElement);
   }, []);
 
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', handleScreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleScreenChange);
+    };
+  }, [handleScreenChange]);
+
   /**
    * Toggles fullscreen mode for the image gallery.
    */
@@ -48,14 +55,6 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     }
   }, [isFullscreen]);
 
-  useEffect(() => {
-    document.addEventListener('fullscreenchange', handleScreenChange);
-    handleFullscreenClick(); // Explicitly call the function
-    return () => {
-      document.removeEventListener('fullscreenchange', handleScreenChange);
-    };
-  }, [handleScreenChange, handleFullscreenClick]);
-
   // Configuration for the image gallery
   const galleryItems = images.map(image => ({
     original: image,
@@ -68,24 +67,28 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
         transition={{ duration: 0.5 }}
         className="relative w-full h-full"
       >
-        <ReactZoomPanPinchComponent
-          initialScale={1}
-          maxScale={3}
-          className="w-full h-full"
-        >
-          <img
-            src={item.original}
-            alt={item.originalAlt || ''}
-            className="w-full h-full object-contain"
-            loading="lazy" // Add lazy loading for performance
-            onError={(e: any) => {
-              console.error("Image failed to load:", item.original);
-              e.target.onerror = null; // Prevent infinite loop
-              e.target.src = "https://via.placeholder.com/800x600?text=Image+Not+Available"; // Use placeholder image
-            }}
-            onLoad={() => setIsLoading(false)}
-          />
-        </ReactZoomPanPinchComponent>
+        <div className="w-full h-full">
+          <TransformWrapper
+            initialScale={1}
+            initialPositionX={0}
+            initialPositionY={0}
+          >
+            <TransformComponent>
+              <img
+                src={item.original}
+                alt={item.originalAlt || ''}
+                className="w-full h-full object-contain"
+                loading="lazy"
+                onError={(e: any) => {
+                  console.error("Image failed to load:", item.original);
+                  e.target.onerror = null;
+                  e.target.src = "https://via.placeholder.com/800x600?text=Image+Not+Available";
+                }}
+                onLoad={() => setIsLoading(false)}
+              />
+            </TransformComponent>
+          </TransformWrapper>
+        </div>
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
             <LoadingSpinner />
@@ -97,7 +100,6 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
 
   /**
    * Renders the fullscreen button.
-   * @param onClick - The function to call when the button is clicked.
    */
   const renderFullscreenButton = (onClick: MouseEventHandler<HTMLElement>) => (
     <motion.button
@@ -113,8 +115,6 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
 
   /**
    * Renders the left navigation button.
-   * @param onClick - The function to call when the button is clicked.
-   * @param disabled - Whether the button is disabled.
    */
   const renderLeftNav = (onClick: MouseEventHandler<HTMLElement>, disabled: boolean) => (
     <motion.button
@@ -124,6 +124,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
       disabled={disabled}
       className="image-gallery-icon"
       aria-label={t('gallery.prev')}
+      style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', left: '10px' }}
     >
       <ChevronLeft className="w-6 h-6 text-white hover:text-amber-400 transition-colors" />
     </motion.button>
@@ -131,8 +132,6 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
 
   /**
    * Renders the right navigation button.
-   * @param onClick - The function to call when the button is clicked.
-   * @param disabled - Whether the button is disabled.
    */
   const renderRightNav = (onClick: MouseEventHandler<HTMLElement>, disabled: boolean) => (
     <motion.button
@@ -142,6 +141,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
       disabled={disabled}
       className="image-gallery-icon"
       aria-label={t('gallery.next')}
+      style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', right: '10px' }}
     >
       <ChevronRight className="w-6 h-6 text-white hover:text-amber-400 transition-colors" />
     </motion.button>
@@ -156,7 +156,10 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     onScreenChange: handleScreenChange,
     onErrorImageURL: "https://via.placeholder.com/800x600?text=Image+Not+Available",
     useBrowserFullscreen: false,
-    renderFullscreenButton: renderFullscreenButton,
+    renderFullscreenButton: (onClick: MouseEventHandler<HTMLElement>) => renderFullscreenButton((event) => {
+          handleFullscreenClick();
+          onClick(event);
+        }),
     renderLeftNav: renderLeftNav,
     renderRightNav: renderRightNav,
     labels: {

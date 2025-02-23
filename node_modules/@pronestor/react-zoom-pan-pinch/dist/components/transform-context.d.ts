@@ -1,0 +1,63 @@
+import React, { Component } from "react";
+import { AnimationType, BoundsType, LibrarySetup, PositionType, ReactZoomPanPinchProps, ReactZoomPanPinchRef, ReactZoomPanPinchState, VelocityType } from "../models";
+declare const Context: React.Context<import("../models").ReactZoomPanPinchComponentHelpers & ReactZoomPanPinchState & {
+    contextInstance: TransformContext | null;
+}>;
+declare class TransformContext extends Component<Omit<ReactZoomPanPinchProps, "ref"> & {
+    setRef: (context: ReactZoomPanPinchRef) => void;
+}> {
+    mounted: boolean;
+    transformState: ReactZoomPanPinchState;
+    setup: LibrarySetup;
+    wrapperComponent: HTMLDivElement | null;
+    contentComponent: HTMLDivElement | null;
+    isInitialized: boolean;
+    bounds: BoundsType | null;
+    previousWheelEvent: WheelEvent | null;
+    wheelStopEventTimer: ReturnType<typeof setTimeout> | null;
+    wheelAnimationTimer: ReturnType<typeof setTimeout> | null;
+    isPanning: boolean;
+    startCoords: PositionType | null;
+    lastTouch: number | null;
+    distance: null | number;
+    lastDistance: null | number;
+    pinchStartDistance: null | number;
+    pinchStartScale: null | number;
+    pinchMidpoint: null | PositionType;
+    velocity: VelocityType | null;
+    velocityTime: number | null;
+    lastMousePosition: PositionType | null;
+    animate: boolean;
+    animation: AnimationType | null;
+    maxBounds: BoundsType | null;
+    pressedKeys: {
+        [key: string]: boolean;
+    };
+    componentDidMount(): void;
+    componentWillUnmount(): void;
+    componentDidUpdate(oldProps: ReactZoomPanPinchProps): void;
+    private handleInitializeWrapperEvents;
+    private handleInitialize;
+    private onWheelZoom;
+    private onPanningStart;
+    private onPanning;
+    private onPanningStop;
+    private onPinchStart;
+    private onPinch;
+    private onPinchStop;
+    private onTouchPanningStart;
+    private onTouchPanning;
+    private onTouchPanningStop;
+    private onDoubleClick;
+    private clearPanning;
+    private setKeyPressed;
+    private setKeyUnPressed;
+    private isPressingKeys;
+    private setComponents;
+    setTransformState: (scale: number, positionX: number, positionY: number) => void;
+    private setCenter;
+    private applyTransformation;
+    private handleRef;
+    render(): JSX.Element;
+}
+export { Context, TransformContext };

@@ -80,5 +80,5 @@
 .image-gallery-thumbnail.active,
 .image-gallery-thumbnail:focus,
 .image-gallery-thumbnail:hover {
-  border-color: #d97706; /* amber-600 */
+  border-color: var(--color-accent); /* amber-600 */
 }

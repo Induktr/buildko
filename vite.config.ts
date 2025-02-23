@@ -66,7 +66,7 @@ export default defineConfig({
       },
 
       transform(src: string, id: string) {
-        if (id === '/app/src/main.tsx') {
+        if (id === 'src/main.tsx') {
           return `
             ${src}
             if (process.env.NODE_ENV === 'development') {
