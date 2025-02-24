@@ -24,7 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={<PageTransition><Home /></PageTransition>} />
               <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
-              <Route path="/projects/:id" element={<PageTransition><ProjectDetail /></PageTransition>} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/about" element={<PageTransition><About /></PageTransition>} />
               <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
               <Route path="/blog/:id" element={<PageTransition><BlogPost /></PageTransition>} />

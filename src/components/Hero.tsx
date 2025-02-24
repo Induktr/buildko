@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
@@ -7,7 +7,9 @@ export default function Hero() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
   const { t } = useTranslation()
-  
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
@@ -15,17 +17,28 @@ export default function Hero() {
     <div ref={ref} className="relative bg-gray-900 h-[600px] flex items-center overflow-hidden">
       <motion.div className="absolute inset-0" style={{ y }}>
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/60" />
+        {!imageLoaded && !imageError ? (
+          <div className="h-full w-full object-cover bg-gray-700 animate-pulse" />
+        ) : imageError ? (
+          <div className="h-full w-full object-cover bg-red-700 text-white flex items-center justify-center">
+            Error loading image
+          </div>
+        ) : null}
         <motion.img
           src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3"
           alt={t('hero.title')}
           className="h-full w-full object-cover"
+          loading="lazy"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.8 }}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageError(true)}
+          style={{ display: imageLoaded ? 'block' : 'none' }}
         />
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         style={{ opacity }}
       >
@@ -38,7 +51,7 @@ export default function Hero() {
           >
             {t('hero.title')}
           </motion.h1>
-          
+
           <motion.p
             className="text-xl text-gray-200 mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -47,7 +60,7 @@ export default function Hero() {
           >
             {t('hero.subtitle')}
           </motion.p>
-          
+
           <motion.div
             className="flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 20 }}
@@ -55,27 +68,27 @@ export default function Hero() {
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             <Link to="/projects">
-                          <motion.button
-                            className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-md font-medium transition-colors"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            {t('hero.cta.projects')}
-                          </motion.button>
-                        </Link>
+              <motion.button
+                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-md font-medium transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t('hero.cta.projects')}
+              </motion.button>
+            </Link>
             <motion.button
-                          className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() => {
-                            const footer = document.getElementById('footer');
-                            if (footer) {
-                              footer.scrollIntoView({ behavior: 'smooth' });
-                            }
-                          }}
-                        >
-                          {t('hero.cta.contact')}
-                        </motion.button>
+              className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const footer = document.getElementById('footer');
+                if (footer) {
+                  footer.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              {t('hero.cta.contact')}
+            </motion.button>
           </motion.div>
         </div>
       </motion.div>

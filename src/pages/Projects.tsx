@@ -15,6 +15,8 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const { t, i18n } = useTranslation();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const [{ scale, rotateX, rotateY }, api] = useSpring(() => ({
     scale: 1,
     rotateX: 0,
@@ -57,19 +59,27 @@ useGesture(
           className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
         >
           <div className="relative h-64 overflow-hidden">
-            <motion.img
+            {!imageLoaded && !imageError ? (
+              <div className="h-full w-full object-cover bg-gray-700 animate-pulse" />
+            ) : imageError ? (
+              <div className="h-full w-full object-cover bg-red-700 text-white flex items-center justify-center">
+                Error loading image
+              </div>
+            ) : null}
+            <img
               src={project.images[0]}
               alt={project.title}
               className="w-full h-full object-cover"
               loading="lazy"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
+              style={{ display: imageLoaded ? 'block' : 'none' }}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
             />
             <motion.div
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 0.2 }}
               className="absolute inset-0 bg-black transition-opacity"
-          />
+            />
           </div>
           <div className="p-6">
             <span className="text-sm font-medium text-amber-600">

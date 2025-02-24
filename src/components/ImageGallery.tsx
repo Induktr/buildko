@@ -116,53 +116,88 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     );
   };
 
-  const galleryItems = images.map(image => ({
-    original: image,
-    thumbnail: image,
-    thumbnailLoading: 'lazy' as const,
-    renderItem: (item: any) => (
-      <TransformWrapper
-        ref={transformWrapperRef}
-        initialScale={1}
-        minScale={0.5}
-        maxScale={4}
-        centerOnInit
-        wheel={{ step: 0.1 }}
-      >
-        {(utils) => (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative w-full h-full"
+  const galleryItems = images.map(image => {
+    return {
+      original: image,
+      thumbnail: image,
+      thumbnailLoading: 'lazy' as const,
+      renderItem: (item: any) => {
+
+        return (
+          <TransformWrapper
+            ref={transformWrapperRef}
+            initialScale={1}
+            minScale={0.5}
+            maxScale={4}
+            centerOnInit
+            wheel={{ step: 0.1 }}
           >
-            {renderZoomControls(utils)}
-            <TransformComponent
-              wrapperClass="!w-full !h-full"
-              contentClass="!w-full !h-full"
-            >
-              <img
-                src={item.original}
-                alt={item.originalAlt || ''}
-                className="w-full h-full object-contain"
-                loading="lazy"
-                onError={(e: any) => {
-                  console.error("Image failed to load:", item.original);
-                  e.target.src = "https://via.placeholder.com/800x600?text=Image+Not+Available";
-                }}
-                onLoad={() => setIsLoading(false)}
-              />
-            </TransformComponent>
-            {isLoading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-900/10">
-                <LoadingSpinner />
-              </div>
-            )}
-          </motion.div>
-        )}
-      </TransformWrapper>
-    ),
-  }));
+            {(utils) => {
+              const renderContent = () => {
+                const [imageLoaded, setImageLoaded] = useState(false);
+                const [imageError, setImageError] = useState(false);
+
+                if (imageError) {
+                  return (
+                    <div className="absolute inset-0 flex items-center justify-center bg-red-700 text-white">
+                      Error loading image
+                    </div>
+                  );
+                }
+
+                if (!imageLoaded) {
+                  return (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-700 animate-pulse" />
+                  );
+                }
+
+                return (
+                  <TransformComponent
+                    wrapperClass="!w-full !h-full"
+                    contentClass="!w-full !h-full"
+                  >
+                    <img
+                      src={item.original}
+                      alt={item.originalAlt || ''}
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                      onError={(e: any) => {
+                        console.error("Image failed to load:", item.original);
+                        e.target.src = "https://via.placeholder.com/800x600?text=Image+Not+Available";
+                        setImageError(true);
+                      }}
+                      onLoad={() => {
+                        if (item.original) {
+                          setImageLoaded(true);
+                        }
+                      }}
+                    />
+                  </TransformComponent>
+                );
+              };
+
+              return (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="relative w-full h-full"
+                >
+                  {renderZoomControls(utils)}
+                  {renderContent()}
+                  {isLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-900/10">
+                      <LoadingSpinner />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            }}
+          </TransformWrapper>
+        );
+      },
+    };
+  });
 
   const galleryConfig = {
     items: galleryItems,

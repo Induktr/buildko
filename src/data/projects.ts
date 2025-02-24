@@ -39,9 +39,18 @@ export const projects: Project[] = [
     category: "Residential",
     description: "An exclusive residential development featuring premium amenities and custom finishes.",
     images: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-      "https://images.unsplash.com/photo-1512916194211-3f2b7f5f7de3"
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740390614/Portfolio_24-02-2025_09-42-40_3_pfpnqb.jpg",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740390952/Portfolio9_24-02-2025_09-46-44_rpgwwz.png",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740390482/Portfolio12_24-02-2025_09-46-44_thumb_aeukpa.png",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740391576/Portfolio4_24-02-2025_09-46-44_thumb_2_pzeaw3.png",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740390482/Portfolio10_24-02-2025_09-46-44_thumb_nkqlwp.png",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740393607/Portfolio13_24-02-2025_09-46-44_thumb_p0i6fq.jpg",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740394075/Portfolio14_24-02-2025_09-46-44_thumb_efwems.jpg",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740394076/Portfolio15_24-02-2025_09-46-44_thumb_duicdw.png",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740394075/Portfolio16_24-02-2025_09-46-44_thumb_cvabtj.jpg",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740395903/Portfolio21_24-02-2025_09-46-44_thumb_wonl16.jpg",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740395734/Portfolio20_24-02-2025_09-46-44_thumb_usfisk.png",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740396792/Portfolio23_24-02-2025_09-46-44_thumb_hubtgj.png"
     ],
     completionDate: "2023",
     client: "Premium Living LLC",
@@ -60,8 +69,8 @@ export const projects: Project[] = [
     category: "Industrial",
     description: "A modern warehouse facility with advanced logistics capabilities and sustainable features.",
     images: [
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
-      "https://images.unsplash.com/photo-1586528116493-da5c594eb073",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740391359/Portfolio9_24-02-2025_09-42-50_eraeqd.png",
+      "https://res.cloudinary.com/dsjalneil/image/upload/v1740394075/Portfolio17_24-02-2025_09-46-44_thumb_d7esvt.jpg",
       "https://images.unsplash.com/photo-1586528116747-e234ab387c71"
     ],
     completionDate: "2024",

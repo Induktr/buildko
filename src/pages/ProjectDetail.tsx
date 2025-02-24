@@ -7,11 +7,31 @@ import { CalendarDays, CircleCheck, DollarSign, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { BrickAnimation } from '../components/animations/BrickAnimation'
 import PageTransition from '../components/animations/PageTransition'
+import { useEffect } from 'react';
 
 export default function ProjectDetail() {
   const { t, i18n } = useTranslation()
   const { id } = useParams()
   const project = projects.find(p => p.id === id)
+
+  useEffect(() => {
+    const prefetchImages = async () => {
+      if (project?.images) {
+        await Promise.all(
+          project.images.map(
+            (image) =>
+              new Promise((resolve) => {
+                const img = new Image();
+                img.src = image;
+                img.onload = () => resolve(null);
+                img.onerror = () => resolve(null);
+              })
+          )
+        );
+      }
+    };
+    prefetchImages();
+  }, [project?.images]);
 
   if (!project) {
     return <Navigate to="/projects" replace />
