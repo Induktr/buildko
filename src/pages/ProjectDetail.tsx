@@ -7,7 +7,6 @@ import { CalendarDays, CircleCheck, DollarSign, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { BrickAnimation } from '../components/animations/BrickAnimation'
 import PageTransition from '../components/animations/PageTransition'
-import { useEffect } from 'react';
 
 export default function ProjectDetail() {
   const { t, i18n } = useTranslation()

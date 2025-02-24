@@ -12,10 +12,14 @@ interface ImageGalleryProps {
 }
 
 interface GalleryImageProps {
-  item: any;
+  item: {
+    original: string;
+    originalAlt?: string;
+  };
+  onImageLoad?: () => void;
 }
 
-const GalleryImage: React.FC<{ item: any }> = ({ item }) => {
+const GalleryImage = ({ item, onImageLoad }: GalleryImageProps) => {
   const [, setImageDimensions] = useState({ width: 0, height: 0 });
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -97,6 +101,7 @@ const GalleryImage: React.FC<{ item: any }> = ({ item }) => {
             transform: `scale(${scale})`,
             transition: 'transform 0.3s ease-in-out'
           }}
+          onLoad={onImageLoad}
           onError={(e: any) => {
             console.error("Image failed to load:", item.original);
             e.target.src = "https://via.placeholder.com/800x600?text=Image+Not+Available";
@@ -180,13 +185,24 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     loading: 'lazy' as const,
     srcSet: `${image} 800w, ${image.replace(/\.(jpg|jpeg|png|gif)$/i, '_medium.$1')} 400w`,
     sizes: "(max-width: 768px) 100vw, 800px",
+    renderItem: (item: any) => (
+      <GalleryImage 
+        item={item} 
+        onImageLoad={() => console.log('Image loaded:', item.original)} 
+      />
+    ),
   }));
 
   const galleryConfig = {
     items: galleryItems,
     renderLeftNav: renderNavigationButtons('left'),
     renderRightNav: renderNavigationButtons('right'),
-    ...(document.fullscreenEnabled ? { renderFullscreenButton: (onClick: MouseEventHandler<HTMLElement>) => renderFullscreenButton(onClick) } : {}),
+    onScreenChange: handleScreenChange,
+    renderFullscreenButton: (onClick: MouseEventHandler<HTMLElement>) => 
+      renderFullscreenButton((event) => {
+        handleFullscreenClick();
+        onClick(event);
+      }),
   };
 
   return (
