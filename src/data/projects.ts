@@ -70,8 +70,8 @@ export const projects: Project[] = [
     description: "A modern warehouse facility with advanced logistics capabilities and sustainable features.",
     images: [
       "https://res.cloudinary.com/dsjalneil/image/upload/v1740391359/Portfolio9_24-02-2025_09-42-50_eraeqd.png",
-      "https://res.cloudinary.com/dsjalneil/image/upload/v1740394075/Portfolio17_24-02-2025_09-46-44_thumb_d7esvt.jpg",
-      "https://images.unsplash.com/photo-1586528116747-e234ab387c71"
+      "https://images.unsplash.com/photo-1606761944722-867a8c99503c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1576772871588-58c399ff5719?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
     ],
     completionDate: "2024",
     client: "Global Logistics Co.",
